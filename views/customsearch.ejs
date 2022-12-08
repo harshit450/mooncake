@@ -1,0 +1,48 @@
+<%-include("header")-%>
+<div class="container" >
+  <div class="head-font" style="margin-bottom:20px;margin-top:40px;">
+    <h2>Lets start our search!</h2>
+  </div>
+
+  <% for(let i=0;i<array.length;i++){%>
+
+      <% if(array[i].type==custom){%>
+        <h5 class="sub-head-font" style="font-weight:bolder;margin-bottom:15px;display:inline;"><span style="color:#9400FF;"><%=custom%></span> Websites </h5>
+          <% break; %>
+       <%}%>
+   <%}%>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" style="margin-bottom:40px;">
+
+      <% array.forEach(function(item){%>
+        <% if(item.type==custom){%>
+
+          <div class="col" >
+            <div class="card box-shadow"  data-toggle="popover" data-bs-trigger="hover focus" title="<%=item.title%>" data-bs-content="<%=item.description%>">
+              <div class="themePreview">
+                <img src="images/<%=item.thumbnail[0]%>">
+              </div>
+              <div class="card-body">
+
+                <form  action="/form" method="post">
+                  <p class="theme-title"   ><%=item.title%></p>
+
+                  <input type="hidden" name="title" value="<%=item.title%>">
+                  <p class="card-info" style="visibility:hidden;display:none;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <button type="submit" class="btn  button" style="background:#9400FF;color:white;">select</button>
+                    <a class="btn btn-outline-dark button" href="<%=item.url%>">preview</a>
+                  </div>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        <%}%>
+      <%})%>
+
+  </div>
+
+</div>
+<%-include("footer")-%>

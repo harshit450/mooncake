@@ -1,0 +1,90 @@
+<%-include("header")-%>
+<% if(messages.error) { %>
+  <h5 style=" color: red; text-align: center;"><%= messages.error %></h5>
+<% } %>
+<div class="content" style="padding:2rem 0">
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10">  
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+
+            <h3 class="heading mb-4">Register your account now!</h3>
+            <h5>Alredy have an account! - <a style="color: blue; text-decoration: none;" href="login">Login Now</a>.</h5>
+            <p><img src="images/manDev.png" alt="Image" class="img-fluid"></p>
+          </div>
+          <div class="col-md-6">
+            <form class="mb-5" id="myForm" method="post" action="/register">
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="text" class="form-control" name="name" id="name" placeholder="Full name" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="text" class="form-control" name="phoneno" id="phoneno" placeholder="Phone number" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="text" class="form-control" name="cname" id="companyName" placeholder="Company name" >
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <textarea class="form-control" name="details" id="details" cols="30" rows="8" placeholder="Details of your company (optional)"></textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Password" minlength="6"required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <button type="submit" value="Send Message" class="btnn btnn-primary rounded-0 py-2 px-4">Submit</button>
+              </div>
+              </div>
+                
+            </form>
+
+            <div id="form-message-warning mt-4"></div>
+            <div id="form-message-success">
+              Your message was sent, thank you!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<style>
+  /* register image display */
+  @media(max-width:767px)
+  {
+    .img-fluid{
+      display: none;
+    } 
+  }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+ function isSuccess(success){
+
+
+    swal("Success!", "Please go back to home for more!", "success");
+  //  document.getElementById("myForm").reset();
+
+}
+
+
+
+</script>
+<%-include("footer")-%>

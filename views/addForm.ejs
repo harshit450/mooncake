@@ -1,0 +1,63 @@
+<%-include("header")-%>
+<div class="row">
+  <div class="col-md-6" style="padding:30px;text-align:center;width:400px;margin:0 auto;">
+    <p style="font-weight:bold;">Advertise-</p>
+
+    <form class="mb-5" id="myForm" method="post" onsubmit="isSuccess()" action="/postAdd">
+
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <input type="text" class="form-control"  name="title" id="name" placeholder="Title">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <input type="text" class="form-control" name="description"  placeholder="Description" >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <input type="text" class="form-control" name="duration"  placeholder="Duration">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <input type="text" class="form-control" name="textColor"  placeholder="Text Color">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <input type="text" class="form-control" name="color"  placeholder="Background Color">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <button type="submit" style="margin-top:20px;" value="Send Message" class="btnn btnn-primary rounded-0 py-2 px-4">Submit</button>
+
+          <span class="submitting"></span>
+        </div>
+      </div>
+    </form>
+
+    <div id="form-message-warning mt-4"></div>
+    <div id="form-message-success">
+      Your ad is advertised, thank you!
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <% obj.forEach(function(item){%>
+      <form  action="/deleteAd" method="post">
+         <div style="padding:20px;margin-top:20px;margin-right:30px;background:<%= item.color %>;">
+           <p ><%= item.head %></p>
+           <button type="submit" name="id" class="btn btn-sm btn-outline-secondary" value="<%=item._id%>" >Delete</button>
+         </div>
+
+         </form>
+    <%})%>
+  </div>
+</div>
+<%-include("footer")-%>

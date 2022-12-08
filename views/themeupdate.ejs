@@ -1,0 +1,114 @@
+<%-include("header")-%>
+<div class="content">
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+
+
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <% array.forEach(t => {%>
+                <div class="col">
+                  <div class="card shadow-sm" style="width: 85%;">
+                    <div class="themePreview">
+                      <img  src="data:image/jpeg;charset=utf-8;base64,<%=t.thumbnail.toString('base64')%>" style="width: 360px;height:225px;margin-left: 2%;" alt="" >
+                    </div>
+                    <div class="card-body">
+      
+                        <p style="font-weight:bold;text-align:center;"><%=t.title%></p>
+                        <input type="hidden" name="title" value="<%=t.title%>">
+                    </div>
+                  </div>
+                </div>
+
+      
+
+          </div>
+          <div class="col-md-6">
+            <p style="font-weight:bold;">Update Theme</p>
+
+            <form class="mb-5" id="myForm" method="post" onsubmit="isSuccess()" action="/updatetheme" enctype="multipart/form-data">
+              <input name="id" type="hidden" value="<%=t._id%>">
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <p style="font-weight:bold;">Title</p>
+                  <input type="text" class="form-control" name="title" id="name" value="<%=t.title%>" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <p style="font-weight:bold;">Description</p>
+                  <input type="text" class="form-control" name="description" id="description" value="<%=t.description%>" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <p style="font-weight:bold;">Price</p>
+                  <input type="text" class="form-control" name="price" id="companyName" value="<%=t.price%>" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <p style="font-weight:bold;">URL</p>
+                  <input type="text" class="form-control" name="url" id="product" value="<%=t.url%>" placeholder="Url" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <p style="font-weight: bold;">Download Image to edit and upload - <a href="data:image/jpeg;charset=utf-8;base64,<%=t.thumbnail.toString('base64')%>" download>Download-Now!</a></p>
+                    <input type="file" class="form-control" name="thumbnail"  placeholder="Thumbnail" >
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <p style="font-weight: bold;">Current Type - <%=t.type%></p>
+
+                  <select required name="type" style="width:120px;" >
+                    <option value="">Choose</option>
+                    <option value="Educational">Educational</option>
+                    <option value="Sports">Sports</option>
+                    <option value="E-Commerce">E-Commerce</option>
+                    <option value="Portfolio">Portfolio</option>
+                    <option value="Service">Service</option>
+                    <option value="Nonprofit">Nonprofit</option>
+                    <option value="Infopreneur">Infopreneur</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <button type="submit" style="margin-top:20px;" value="Send Message" class="btnn btnn-primary rounded-0 py-2 px-4">Update</button>
+
+                  <span class="submitting"></span>
+                </div>
+              </div>
+            </form>
+
+            <div id="form-message-warning mt-4"></div>
+            <!-- <div id="form-message-success">
+              Your Theme has been updated! 
+            </div>-->
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%})%>
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+ function isSuccess(success){
+
+
+    swal("Updated!", "Theme has been updated!", "success");
+  //  document.getElementById("myForm").reset();
+
+}
+
+
+
+</script>
+<%-include("footer")-%>
